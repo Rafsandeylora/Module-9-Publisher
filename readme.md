@@ -50,3 +50,11 @@ Ini disebut event-driven architecture karena publisher tidak memanggil subscribe
 ![Publisher cargo run](images/publisher-cargo-run.png)
 
 ![RabbitMQ connection or queue](images/rabbitmq-connection-or-queue.png)
+
+## Monitoring Chart Based on Publisher
+
+Setelah publisher dijalankan beberapa kali, RabbitMQ Management UI menunjukkan spike pada chart. Spike tersebut muncul karena setiap kali publisher dijalankan, program mengirim 5 event ke message broker.
+
+Jika publisher dijalankan 3 kali, maka ada sekitar 15 event yang dikirim ke RabbitMQ. Semakin sering publisher dijalankan dalam waktu singkat, semakin terlihat kenaikan aktivitas publish message pada chart RabbitMQ.
+
+![RabbitMQ publisher spike chart](images/rabbitmq-publisher-spike-chart.png)
