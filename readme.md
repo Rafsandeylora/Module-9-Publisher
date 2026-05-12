@@ -37,3 +37,16 @@ Saya menjalankan RabbitMQ menggunakan Docker dengan command:
 ```bash
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
 
+## Sending and Processing Event
+
+Ketika publisher dijalankan dengan `cargo run`, publisher mengirim 5 event `UserCreatedEventMessage` ke message broker RabbitMQ melalui queue `user_created`.
+
+Subscriber yang sedang berjalan sudah terhubung ke RabbitMQ dan mendengarkan queue yang sama, sehingga event yang masuk ke broker dapat diterima dan diproses oleh subscriber.
+
+Ini disebut event-driven architecture karena publisher tidak memanggil subscriber secara langsung. Publisher hanya menerbitkan event ke message broker. Setelah itu, subscriber yang tertarik pada queue tersebut akan mengambil dan memproses event secara asynchronous.
+
+![Subscriber received messages](images/subscriber-received-messages.png)
+
+![Publisher cargo run](images/publisher-cargo-run.png)
+
+![RabbitMQ connection or queue](images/rabbitmq-connection-or-queue.png)
