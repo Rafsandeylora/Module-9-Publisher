@@ -1,6 +1,6 @@
 # Tutorial 8 - Publisher
 
-Nama: Rafsanjani 
+Nama: Rafsanjani
 NPM: 2406495400
 
 ## Reflection 1
@@ -36,6 +36,11 @@ Saya menjalankan RabbitMQ menggunakan Docker dengan command:
 
 ```bash
 docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
+```
+
+RabbitMQ berhasil berjalan dan RabbitMQ Management UI dapat diakses melalui `http://localhost:15672`.
+
+![RabbitMQ running](./images/rabbitmq-running.png)
 
 ## Sending and Processing Event
 
@@ -45,11 +50,11 @@ Subscriber yang sedang berjalan sudah terhubung ke RabbitMQ dan mendengarkan que
 
 Ini disebut event-driven architecture karena publisher tidak memanggil subscriber secara langsung. Publisher hanya menerbitkan event ke message broker. Setelah itu, subscriber yang tertarik pada queue tersebut akan mengambil dan memproses event secara asynchronous.
 
-![Subscriber received messages](images/subscriber-received-messages.png)
+![Subscriber received messages](./images/subscriber-received-messages.png)
 
-![Publisher cargo run](images/publisher-cargo-run.png)
+![Publisher cargo run](./images/publisher-cargo-run.png)
 
-![RabbitMQ connection or queue](images/rabbitmq-connection-or-queue.png)
+![RabbitMQ connection or queue](./images/rabbitmq-connection-or-queue.png)
 
 ## Monitoring Chart Based on Publisher
 
@@ -57,4 +62,4 @@ Setelah publisher dijalankan beberapa kali, RabbitMQ Management UI menunjukkan s
 
 Jika publisher dijalankan 3 kali, maka ada sekitar 15 event yang dikirim ke RabbitMQ. Semakin sering publisher dijalankan dalam waktu singkat, semakin terlihat kenaikan aktivitas publish message pada chart RabbitMQ.
 
-![RabbitMQ publisher spike chart](images/rabbitmq-publisher-spike-chart.png)
+![RabbitMQ publisher spike chart](./images/rabbitmq-publisher-spike-chart.png)
