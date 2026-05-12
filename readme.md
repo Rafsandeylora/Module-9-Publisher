@@ -29,3 +29,11 @@ Bagian-bagiannya adalah:
 - `5672` adalah port AMQP yang digunakan program Rust untuk berkomunikasi dengan RabbitMQ.
 
 Karena keduanya memakai broker dan queue yang sama, event yang dikirim publisher ke queue `user_created` dapat diterima oleh subscriber.
+
+## Running RabbitMQ as Message Broker
+
+Saya menjalankan RabbitMQ menggunakan Docker dengan command:
+
+```bash
+docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.13-management
+
